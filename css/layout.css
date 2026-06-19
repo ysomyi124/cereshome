@@ -1,0 +1,715 @@
+@charset "utf-8";
+
+/* 웹폰트 연결 */
+/* 눈누 - 프레텐다드 연결 */
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+:root{
+    --header-h: 55px;
+    --bg-main: #f4f1e6;
+}
+
+body{
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    line-height: 100%;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    letter-spacing: -0;
+    scroll-behavior: smooth;
+}
+
+div,p,ul,li,span,h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin: 0;
+}
+
+ul,ol,li{list-style: none;}
+
+p{border: 0;}
+
+img{
+    border: 0;
+    vertical-align: middle;
+    outline: none;
+}
+
+a,a:active,a:visited,a:link,a:hover{
+    text-decoration: none;
+    color: #333;
+}
+
+h1,h2,h3,h4,h5,h6,p,span,a,div,li{
+    font-family: 'Pretendard';
+}
+
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* =========================================
+   스크롤 reveal / stagger animation
+========================================= */
+.reveal{
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.in-view{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-group .reveal-item{
+    opacity: 0;
+    transform: translateY(55px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+.stagger-group.in-view .reveal-item{
+    opacity: 1;
+    transform: translateY(0);
+}
+.stagger-group .reveal-item:nth-child(1){transition-delay: .05s;}
+.stagger-group .reveal-item:nth-child(2){transition-delay: .15s;}
+.stagger-group .reveal-item:nth-child(3){transition-delay: .25s;}
+.stagger-group .reveal-item:nth-child(4){transition-delay: .35s;}
+.stagger-group .reveal-item:nth-child(5){transition-delay: .45s;}
+.stagger-group .reveal-item:nth-child(6){transition-delay: .55s;}
+
+/* =========================================
+   헤더 (스크롤시 고정)
+========================================= */
+
+header{
+    height: var(--header-h);
+    background-color: var(--bg-main);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: box-shadow .3s ease, background-color .3s ease;
+}
+
+header.scrolled{
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.logo{
+    width: 130px;
+    margin-left: 30px;
+    float: left;
+    line-height: var(--header-h);
+}
+
+.logo img{
+    max-width: 100%;
+    transition: opacity .3s ease;
+}
+
+.logo a:hover img{opacity: .65;}
+
+nav{
+    width: 25%;
+    margin-right: 30px;
+    float: right;
+}
+
+nav li{
+    margin-left: 54px;
+    float: left;
+    line-height: var(--header-h);
+    position: relative;
+}
+
+nav li:nth-child(1){margin-left: 0;}
+
+nav li h2{
+    font-size: 17px;
+    font-weight: 500;
+    transition: color .25s ease, letter-spacing .25s ease;
+}
+
+nav li a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 14px;
+    width: 0;
+    height: 1px;
+    background-color: #333;
+    transition: width .3s ease;
+}
+
+nav li a:hover::after{width: 100%;}
+nav li a:hover h2{letter-spacing: .5px;}
+
+/* 모바일/태블릿 메뉴 토글 버튼 */
+.nav_toggle{
+    display: none;
+    width: 28px;
+    height: 22px;
+    float: right;
+    margin: 16px 30px 0 0;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 1100;
+}
+
+.nav_toggle span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    position: absolute;
+    left: 0;
+    transition: transform .3s ease, opacity .3s ease, top .3s ease;
+}
+
+.nav_toggle span:nth-child(1){top: 0;}
+.nav_toggle span:nth-child(2){top: 10px;}
+.nav_toggle span:nth-child(3){top: 20px;}
+
+.nav_toggle.open span:nth-child(1){top: 10px; transform: rotate(45deg);}
+.nav_toggle.open span:nth-child(2){opacity: 0;}
+.nav_toggle.open span:nth-child(3){top: 10px; transform: rotate(-135deg);}
+
+/* =========================================
+   메인 광고 배너 (Parallax)
+========================================= */
+
+.main_ad{
+    width: 100%;
+    position: relative;
+    margin-top: var(--header-h);
+    height: 750px;
+    overflow: hidden;
+}
+
+.main_ad_link{display: block; width: 100%; height: 100%;}
+
+.banner{
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 120px);
+    background-image: url("../img/banner/banner.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: transform;
+}
+
+.bn_text{
+    width: 580px;
+    max-width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1.7;
+    color: aliceblue;
+    z-index: 2;
+}
+
+.main_title{
+    font-size: 28px;
+    font-weight: bold;
+    transition: letter-spacing .4s ease;
+}
+
+.main_ad_link:hover .main_title{letter-spacing: 2px;}
+
+.main_sub{
+    font-size: 15px;
+    font-weight: 300;
+}
+
+/* main 헤더와 같은 색상 */
+main{
+    background-color: var(--bg-main);
+}
+
+section{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.con_title{
+    text-align: center;
+    line-height: 1;
+    padding: 90px 0 40px;
+}
+
+.con_title h3{
+    font-size: 23px;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+}
+
+.con_title h3::after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #333;
+    margin: 14px auto 0;
+    transition: width .6s ease;
+}
+
+.con_title.in-view h3::after{width: 60px;}
+
+/* =========================================
+   SIGNATURE PRODUCT (이미지 hover fade + 가격 노출)
+========================================= */
+.product ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.product li{
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.product_link{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hover.absolute{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity .6s ease, transform .8s ease;
+}
+
+.hover.alt{opacity: 0;}
+
+.product_link:hover .base{transform: scale(1.08);}
+.product_link:hover .alt{opacity: 1; transform: scale(1.08);}
+
+.product li:nth-child(1) .base{background-image: url("../img/product/product1.jpeg");}
+.product li:nth-child(2) .base{background-image: url("../img/product/product2.jpeg");}
+.product li:nth-child(3) .base{background-image: url("../img/product/product3.jpeg");}
+.product li:nth-child(4) .base{background-image: url("../img/product/product4.jpeg");}
+.product li:nth-child(5) .base{background-image: url("../img/product/product5.jpeg");}
+.product li:nth-child(6) .base{background-image: url("../img/product/product6.jpeg");}
+
+.product li:nth-child(1) .alt{background-image: url("../img/product/product1-1.jpeg");}
+.product li:nth-child(2) .alt{background-image: url("../img/product/product2-1.jpeg");}
+.product li:nth-child(3) .alt{background-image: url("../img/product/product3-1.jpeg");}
+.product li:nth-child(4) .alt{background-image: url("../img/product/product4-1.jpeg");}
+.product li:nth-child(5) .alt{background-image: url("../img/product/product5-1.jpeg");}
+.product li:nth-child(6) .alt{background-image: url("../img/product/product6-1.jpeg");}
+
+.price_tag{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 24px 22px;
+    background: linear-gradient(to top, rgba(0,0,0,.6), transparent);
+    color: #fff;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .4s ease, transform .4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.product_link:hover .price_tag{opacity: 1; transform: translateY(0);}
+
+.price_tag strong{font-size: 15px; font-weight: 500;}
+.price_tag em{font-size: 16px; font-weight: 700; font-style: normal;}
+
+/* =========================================
+   INFO (인스타/블로그) - 텍스트 hover 노출 + 이미지 효과
+========================================= */
+.info{margin-top: 100px;}
+
+.info ul{
+    display: flex;
+    gap: 0;
+}
+
+.info li{
+    flex: 1;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.info_link{display: block; width: 100%; height: 100%;}
+
+.info_img,.info_text{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.info_img{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform .8s ease, filter .5s ease;
+}
+
+.info li:nth-child(1) .info_img{
+    background-image: url("../img/information/instagram.jpeg");
+}
+.info li:nth-child(2) .info_img{
+    background-image: url("../img/information/blog.jpeg");
+}
+
+.info_link:hover .info_img{
+    transform: scale(1.1);
+    filter: brightness(.75);
+}
+
+.info_text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.info_text p{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .45s ease, transform .45s ease;
+}
+
+.info_link:hover .info_text p{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info li:nth-child(1) .insta{background-color: rgba(0,0,0,0);transition: background-color .45s ease;}
+.info li:nth-child(2) .blog{background-color: rgba(0,0,0,0);transition: background-color .45s ease;}
+
+.info_link:hover .insta,
+.info_link:hover .blog{
+    background-color: rgba(0,0,0,0.45);
+}
+
+/* =========================================
+   SHOP THE NEW - Swipe Slider + Progress Bar
+========================================= */
+.newitem{
+    padding: 60px 0 160px;
+}
+
+.slider_viewport{
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+}
+
+.slider_viewport.dragging{cursor: grabbing;}
+
+.slider_track{
+    display: flex;
+    will-change: transform;
+    transition: transform .45s cubic-bezier(.22,.61,.36,1);
+}
+
+.slide_item{
+    flex: 0 0 calc(25% - 15px);
+    margin-left: 20px;
+    user-select: none;
+}
+
+.slide_item:first-child{margin-left: 0;}
+
+.slide_item img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.slide_item a{display: block; overflow: hidden;}
+
+.slide_item a:hover img{transform: scale(1.07);}
+
+.slide_item h4{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-top: 15px;
+    transition: color .25s ease;
+}
+
+.slide_item a:hover h4{color: #8a7a5c;}
+
+.slide_item span{
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.progress_bar{
+    width: 100%;
+    height: 3px;
+    background-color: #ddd6c4;
+    border-radius: 999px;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress_thumb{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #333;
+    border-radius: 999px;
+    transition: left .4s ease, width .4s ease;
+}
+
+/* =========================================
+   푸터
+========================================= */
+footer{
+    background-color: #e6e6e6;
+    padding: 50px 0;
+}
+
+.foot_wrap{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.foot_info{
+    width: 450px;
+    float: left;
+}
+
+.foot_info ul{margin-bottom: 30px;}
+
+.foot_info li{
+    float: left;
+    margin-left: 20px;
+}
+
+.foot_info li:first-child{margin-left: 0;}
+
+.foot_info li a{transition: color .25s ease;}
+.foot_info li a:hover{color: #8a7a5c;}
+
+.foot_info li h5,.cs h5{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.foot_info p,.cs p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #969696;
+}
+
+.cs{
+    width: 280px;
+    float: right;
+}
+
+.cs h5{margin-bottom: 15px;}
+
+.cs span{
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.cs p{margin-top: 18px;}
+
+/* =========================================
+   반응형 - 태블릿 (1024px 이하)
+========================================= */
+@media screen and (max-width: 1024px){
+    nav{display: none;}
+    .nav_toggle{display: block;}
+
+    nav{
+        display: block;
+        position: absolute;
+        top: var(--header-h);
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background-color: var(--bg-main);
+        margin: 0;
+        float: none;
+        transition: max-height .35s ease;
+    }
+
+    nav.open{max-height: 320px;}
+
+    nav ul{padding: 10px 30px 20px;}
+
+    nav li{
+        float: none;
+        margin-left: 0;
+        line-height: 46px;
+        border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    section{padding: 0 28px;}
+
+    .main_ad{height: 540px;}
+
+    .info{margin-top: 70px;}
+
+    .slide_item{flex: 0 0 calc(50% - 10px);}
+
+    .foot_info,.cs{width: 100%; float: none;}
+    .cs{margin-top: 30px;}
+}
+
+/* =========================================
+   반응형 - 모바일 (600px 이하)
+========================================= */
+@media screen and (max-width: 600px){
+    :root{--header-h: 55px;}
+
+    .logo{margin-left: 16px; width: 110px;}
+    .nav_toggle{margin-right: 16px;}
+
+    section{padding: 0 18px;}
+
+    .main_ad{height: 420px;}
+
+    .main_title{font-size: 20px;}
+    .main_sub{font-size: 13px;}
+
+    .con_title{padding: 60px 0 26px;}
+    .con_title h3{font-size: 19px;}
+
+    .product ul{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .price_tag{padding: 14px 12px;}
+    .price_tag strong{font-size: 12px;}
+    .price_tag em{font-size: 13px;}
+
+    .info{margin-top: 40px;}
+    .info ul{flex-direction: column;}
+    .info li{aspect-ratio: 4 / 3;}
+
+    .newitem{padding: 30px 0 90px;}
+    .slide_item{flex: 0 0 78%;}
+
+    .foot_info li{
+        float: none;
+        margin-left: 0;
+        margin-bottom: 6px;
+    }
+    .foot_info ul{margin-bottom: 18px;}
+}
